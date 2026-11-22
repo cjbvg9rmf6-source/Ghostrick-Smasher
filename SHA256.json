@@ -1,6 +1,6 @@
 {
-  "index.html": "085dea9b5ac66f0f40a1de63635d4eeb1a0abfc39fa9edfe2135371e92950594",
-  "test-3000m.html": "91fcb487a12299dca2054ced97ba8c17a9addd1559fd55a0ce9806e30d1a7758",
+  "index.html": "f6099985d8aff7605431c6e76495b90bcf61b1cf891bb94165606f8d7d53e705",
+  "test-3000m.html": "8839467435dba713f7a2fbb79fee4bc6a2328971baef6b30ca8d3a99e48a2a58",
   ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "confetti_cannonade.mp3": "aa8f0119e3eb7c731bf56c9c7ebaaf39ef068f4297df602efcf47c9d11270718",
   "README.md": "e73ac8ace3cd4dcae8742930c0c166ee6662211557c8bf52b797a912d1a67f4b",
@@ -196,5 +196,10 @@
   "assets/catalog/dullahan-20261120.jpg": "00f0d3505b8a48744b4de34235505ca6a6f15eecb06f46865e71fbe17cf0f904",
   "assets/catalog/succubus.jpg": "efe97637f60d32d7ad6790ba4fd30ce8058f8be79e473db27f59345243fbe41c",
   "assets/catalog/skeleton-20261121.jpg": "cba00f7e39777acef0b7298f1a8288027f1589f9cf5e51b651929a55114823fe",
-  "assets/catalog/mummy.jpg": "469062d96f716904d730a120a257cf1fd2c0bf4de0468a1a14f240fb53375dab"
+  "assets/catalog/mummy.jpg": "469062d96f716904d730a120a257cf1fd2c0bf4de0468a1a14f240fb53375dab",
+  "assets/dullahan0-restored.webp": "13f3f3d6275e2274544fafeae247d4a7b0deaebd190e4ac9de6c2d442e82ffe5",
+  "assets/dullahan1-restored.webp": "ecfeb867e34bb2e678be1822677cf46c4612b5d533fd5f822c895f47f74f0548",
+  "assets/dullahan2-restored.webp": "e1addac6d39bc57ce1f9289cec8a58e3dc1e736edf718c7f9037ed8ba83ea1ec",
+  "assets/dullahan_attack0-restored.webp": "245c5e828f5098ce17f38fc13137be8ae0e49cd07300cc2f4a295dd30839e01b",
+  "assets/dullahan_death0-restored.webp": "c1b1ff33809aec101510c5d856e23bacc1a11ee53f160335f0110532c1d6d5bc"
 }
