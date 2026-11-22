@@ -2,9 +2,10 @@
 
 ブラウザで遊ぶ横スクロール迎撃ゲーム。タップ／クリックで攻撃。
 
-## 公開予定URL（公開完了後に利用）
-- 通常版: https://cjbvg9rmf6-source.github.io/Ghostrick-Smasher/
-- 3000m開始版: https://cjbvg9rmf6-source.github.io/Ghostrick-Smasher/test-3000m.html
+## 公開版（0m開始）
+配布・共有するゲームは `main` 直下の `index.html` を使用します。GitHub Pages 有効化後のプレイ先は次のURLです。
+
+https://cjbvg9rmf6-source.github.io/Ghostrick-Smasher/
 
 ## GitHub Pages 公開手順
 1. cjbvg9rmf6-source に新規リポジトリ `Ghostrick-Smasher` を作成。
