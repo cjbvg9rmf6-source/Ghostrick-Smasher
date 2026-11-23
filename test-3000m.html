@@ -137,6 +137,7 @@ body.force-landscape .rank-celebration{width:min(30vw,180px)}
 <div class="overlay" id="overlay"><div class="panel"><button type="button" class="pill orientation-toggle" id="menuOrientation" aria-pressed="false">横画面にする</button><div id="titleContent"><p class="eyebrow" id="eyebrow">3,000m TEST PLAY</p><h1 id="overlayTitle">Ghostrick<br>Smasher</h1><p class="subtitle" id="overlayText">魔女と一緒に、ハロウィンの墓地を駆け抜けよう。<br>悪戯してくる仲間は、ぶつかる直前にタップしてお仕置きしよう。<br>雪女が一緒だと、失敗しても一度だけ守ってくれるよ。</p><div class="legend" id="legend"><span>✦ タップ／クリック：攻撃</span><span>❄ 雪女：迎撃失敗時に1回だけ守ってくれる</span></div><figure id="rankCelebration" class="rank-celebration" hidden><img id="rankCelebrationImage" width="1024" height="1024" alt=""><figcaption id="rankCelebrationCaption"></figcaption></figure><p id="rankMessage" class="rank-message" hidden></p><div class="results hidden" id="results"></div><div id="resultShare" hidden>
 <div class="result-share-actions">
 <a class="pill" id="shareToX" target="_blank" rel="noopener noreferrer">Xで投稿</a>
+<a class="pill" id="rankDownload" download>ランク画像を保存</a>
 <button type="button" class="pill" id="copyResult">投稿文をコピー</button>
 </div>
 <p id="resultShareStatus" role="status"></p>
@@ -1445,15 +1446,45 @@ const resultShare=document.getElementById('resultShare');
 const shareToX=document.getElementById('shareToX');
 const resultShareStatus=document.getElementById('resultShareStatus');
 const resultPostText=document.getElementById('resultPostText');
-const gameShareUrl=new URL('./',window.location.href).href;
+const gameShareUrl='https://cjbvg9rmf6-source.github.io/Ghostrick-Smasher/';
+const rankDownload=document.getElementById('rankDownload');
+let rankShareFile=null;
 let resultPost='';
 function prepareResultShare(){
  const distance=Math.floor(g.dist).toLocaleString('ja-JP');
- resultPost=`Ghostrick Smasher（3000m開始テスト）で ${distance}m 駆け抜けました！\nランク ${getResultRank(g.dist)}／撃破 ${g.kills}体\n#GhostrickSmasher\n${gameShareUrl}`;
+ resultPost=`Ghostrick Smasherで ${distance}m 駆け抜けました！\nランク ${getResultRank(g.dist)}\n撃破 ${g.kills}体\n\nあなたも挑戦してみせんか？\n#GhostrickSmasher\n#ゴーストリック\n${gameShareUrl}`;
  shareToX.href='https://x.com/intent/tweet?'+new URLSearchParams({text:resultPost});
- resultShareStatus.textContent='';
+ const imageUrl=document.getElementById('rankCelebrationImage').src;
+ rankDownload.href=imageUrl;
+ const filename=imageUrl.split('/').pop();
+ rankDownload.download=filename;
+ rankShareFile=null;
+ resultShareStatus.textContent='画像を手動で添付する場合は「ランク画像を保存」を押してください。';
+ if(navigator.canShare && navigator.share){
+  fetch(imageUrl).then(response=>{
+   if(!response.ok)throw new Error('Rank image unavailable');
+   return response.blob();
+  }).then(blob=>{
+   const file=new File([blob],filename,{type:'image/png'});
+   if(rankDownload.href===imageUrl && navigator.canShare({files:[file],text:resultPost})){
+    rankShareFile=file;
+    resultShareStatus.textContent='「Xで投稿」を押し、共有先にXを選んでください。';
+   }
+  }).catch(()=>{});
+ }
  resultPostText.hidden=true;
 }
+shareToX.addEventListener('click',async event=>{
+ if(!rankShareFile)return;
+ event.preventDefault();
+ try{
+  await navigator.share({files:[rankShareFile],text:resultPost});
+ }catch(error){
+  if(error.name==='AbortError')return;
+  rankShareFile=null;
+  resultShareStatus.textContent='「ランク画像を保存」を押してから「Xで投稿」を開き、画像を添付してください。';
+ }
+});
 document.getElementById('copyResult').addEventListener('click',async()=>{
  try{
   await navigator.clipboard.writeText(resultPost);

@@ -1452,7 +1452,7 @@ let rankShareFile=null;
 let resultPost='';
 function prepareResultShare(){
  const distance=Math.floor(g.dist).toLocaleString('ja-JP');
- resultPost=`Ghostrick Smasherで ${distance}m 駆け抜けました！\nランク ${getResultRank(g.dist)}\n撃破 ${g.kills}体\n#GhostrickSmasher\n#ゴーストリック\n${gameShareUrl}`;
+ resultPost=`Ghostrick Smasherで ${distance}m 駆け抜けました！\nランク ${getResultRank(g.dist)}\n撃破 ${g.kills}体\n\nあなたも挑戦してみせんか？\n#GhostrickSmasher\n#ゴーストリック\n${gameShareUrl}`;
  shareToX.href='https://x.com/intent/tweet?'+new URLSearchParams({text:resultPost});
  const imageUrl=document.getElementById('rankCelebrationImage').src;
  rankDownload.href=imageUrl;
